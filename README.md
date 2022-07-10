@@ -1,2 +1,0 @@
-# tenor-app
-Tenor app
