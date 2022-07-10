@@ -3,7 +3,7 @@ import { TrendingResults } from "./trendings";
 import { SearchGif } from "./searchGif";
 import { Results } from "./results";
 import { featuredGifApi } from "../Api/Api";
-import { handleScrollCalculation,Loader } from "../utils/utils";
+import { Loader } from "../utils/utils";
 import "../App.css";
 
 export const FeaturedGif = () => {
@@ -20,7 +20,11 @@ export const FeaturedGif = () => {
   };
 
   const handleScroll =() => {
-    handleScrollCalculation()
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.offsetHeight
+    )
+      return;
     setIsFetching(true);
   }
 
@@ -45,7 +49,7 @@ export const FeaturedGif = () => {
       <SearchGif />
       <TrendingResults />
       <Results data={gifResults} />
-      {isFetching && gifResponse.length > 0 && (
+      {isFetching && gifResponse?.results.length > 0 && (
         <Loader />
       )}
     </>

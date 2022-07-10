@@ -13,6 +13,7 @@ export const SearchGif = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate(`/search/${searchTerm}`);
+    window.location.reload()
   };
 
   return (
